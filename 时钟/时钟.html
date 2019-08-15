@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,ol{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		#canvas{
+			border: 1px solid red;
+			margin: 0 auto;
+			display: block;
+			background:url(img/clock.png) no-repeat center; 
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<script>
+		var canvas = document.getElementById('canvas')
+		//获取画笔
+		var txt = canvas.getContext('2d')
+		//偏移坐标轴
+		txt.translate(250,250)
+
+
+		//获取当前时间
+		var date = new Date()
+		// console.log(date)
+		var idx = date.getHours()*3600 + date.getMinutes()*60 + date.getSeconds()
+		console.log( date.getHours() )
+
+		var deg = Math.PI / 30
+		setInterval(function(){
+			idx++
+			//清屏
+			txt.clearRect(-1000,-1000,3000,3000)
+			// 秒针
+			txt.save()   //保存的其实就是原始坐标轴
+			//旋转
+			txt.rotate( idx* deg)
+			line(0,20,0,-140)
+			txt.restore()
+
+			txt.save()   //保存的其实就是原始坐标轴
+			//分针
+			txt.lineWidth= 4    //改变线宽
+			txt.rotate( idx* deg /60)  //改变坐标轴
+			line(0,20,0,-120)
+			txt.restore()    //恢复原来的坐标轴和线宽
+
+			txt.save()   //保存的其实就是原始坐标轴
+			//时针
+			txt.lineWidth= 6
+			txt.rotate( idx* deg /60 /12)
+			line(0,20,0,-100)
+			txt.restore()
+		},1000)
+
+		function line(x1,y1,x2,y2){
+			//开启路径
+			txt.beginPath()
+			//直线起点
+			txt.moveTo(x1,y1)
+			//指向终点
+			txt.lineTo(x2,y2)
+			//关闭路径
+			txt.closePath()
+			//描边
+			txt.stroke()
+		}
+	</script>
+</body>
+</html>

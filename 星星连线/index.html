@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星星</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,ol{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		#canvas{
+			background: url(imgs/sf.jpg);
+		}
+		body,html{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" ></canvas>
+	<script>
+		var canvas = document.getElementById('canvas')
+		var body = document.getElementsByTagName('body')[0]
+		var txt = canvas.getContext('2d')
+		// 画布宽高
+		var width = body.clientWidth
+		var height = body.clientHeight
+		canvas.width = width
+		canvas.height = height
+		//移动速度
+		
+		//画笔颜色
+		txt.fillStyle = 'white'
+		txt.strokeStyle = 'rgba(255,255,123,.4)'
+		txt.lineWidth = '.3'
+
+		function Star(txt,r,x,y){
+			this.txt = txt
+			this.r = r
+
+			//画布宽
+			this.width = width
+			this.height = height
+
+			//速度 [1-3] -1次方或是 1次方 
+			this.x_speed = (parseInt(Math.random() * 3) + 1) * Math.pow(-1, parseInt(Math.random() * 10) + 1)/10;
+			this.y_speed = (parseInt(Math.random() * 3) + 1) * Math.pow(-1, parseInt(Math.random() * 10) + 1)/10;
+			
+			//坐标
+			this.x = x		
+			this.y = y
+		}
+		// 渲染
+		Star.prototype.render = function(){
+			// 开启路径
+			txt.beginPath()
+			//绘制
+			txt.arc(this.x,this.y,this.r,0,Math.PI*2)
+			//绘制
+			txt.fill()
+			//关闭路径
+			txt.closePath()
+		}
+
+		//移动
+		Star.prototype.move = function(){
+			this.x -= this.x_speed
+			this.y -= this.y_speed
+		}
+		// X转向
+		Star.prototype.changeX = function(){
+			this.x_speed = -this.x_speed	
+		}
+		//Y转向 
+		Star.prototype.changeY = function(){
+			this.y_speed = -this.y_speed
+		}
+
+		
+		//创建100的星星
+		var arr = [];
+		for(var i = 0;i<100;i++){
+			arr.push( new Star(txt,1,Math.random()*this.width,Math.random()*this.height) ) 
+		}
+
+	
+	//注意定时器是每20ms清屏，循环要写在定时器内，如果循环在外，
+	//定时器在内，就会变为循环内开启了多个定时器清屏。
+		setInterval(function(){
+			// 清屏
+			txt.clearRect(0,0,width,height)
+			arr.forEach(function(value,index){	
+				if (value.x < 0 || value.x > width) {
+					value.changeX();
+				}
+				if (value.y < 0 || value.y > height) {
+					value.changeY();
+				}
+				value.move()
+				value.render()
+				m_star.render()
+			})
+
+			//星星连线
+			//原理：判断星星和其他其他星星做比较距离，
+			arr.forEach(function(value,index){
+				// 注意不重复作比较。当前的星星和后面的星星比较
+				for(var i = index + 1 ;i<arr.length;i++){
+					if(Math.abs(value.x - arr[i].x) < 50 && Math.abs(value.y - arr[i].y) < 50 ){
+						line(value.x, value.y, arr[i].x, arr[i].y);
+					}
+				}
+				//m_star 和 其他星星比较
+				if(Math.abs(value.x - m_star.x) < 50 && Math.abs(value.y - m_star.y) < 50){
+					line(value.x, value.y, m_star.x, m_star.y);
+				}
+			})
+		},20)
+
+
+		//创建一个跟随鼠标移动的星星,
+		//必须是全局变量的星星，不然鼠标不移动前就报错了
+		m_star = new Star(txt,1,0,0)
+		document.onmousemove = function(e){
+			var x = e.clientX
+			var y = e.clientY
+
+			m_star.x = x
+			m_star.y = y
+		}
+		//点击聚集星星
+		document.onclick = function(e){
+			var x = e.clientX
+			var y = e.clientY
+
+			//删除5个
+			for(var i = 0;i<5;i++){
+				arr.shift()
+			}
+			//创建5个
+			for(var i = 0 ; i<5;i++){
+				arr.push( new Star(txt,1,x,y) )
+			}
+		}
+		
+		//绘制直线的方法
+		function line(x1,y1,x2,y2){
+			//开启路径
+			txt.beginPath()
+			//直线起点
+			txt.moveTo(x1,y1)
+			//指向终点
+			txt.lineTo(x2,y2)
+			//关闭路径
+			txt.closePath()
+			//描边
+			txt.stroke()
+		}	
+	</script>
+</body>
+</html>
+

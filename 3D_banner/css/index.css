@@ -1,0 +1,126 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul,ol{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.container{
+	width: 900px;
+	height: 600px;
+	margin: 20px auto;
+	border: 1px solid red;
+	position: relative;
+}
+.carousel li{
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+}
+.carousel li.cur{
+	display: block;
+}
+.spt{
+	display: none;
+}
+.box1,.box2{
+	width: 50%;
+	height: 60px;
+	position: absolute;
+	/*让子元素保留3d效果*/
+	transform-style: preserve-3d;
+	/*背面不可见*/
+	backface-visibility: hidden;
+	/*方便看轴测图*/
+	/*transform: rotateX(45deg) rotateY(45deg);*/
+}
+.box1{
+	left: 0;
+	/*animation: one 2s linear 0s forwards;*/
+}
+.box2{
+	left: 50%;
+	/*animation: two 2s linear 0s forwards;*/
+}
+.box1 div, .box2 div{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#btn{
+	text-align: center;
+	margin: 620px auto;
+}
+#btn #pre{}
+#btn #next{}
+/*立体样式*/
+.back{
+	width: 100%;
+	height: 100%;
+	background-color: #ccc;
+	transform: translateZ(-5px) rotateX(180deg);
+}
+.front{
+	width: 450px;
+	height: 60px;
+	transform: translateZ(5px);
+}
+.left{
+	height: 100%;
+	width: 10px;
+	background-color: #ccc;
+	transform: translateX( -5px) rotateY(-90deg);
+}
+.right{
+	height: 100%;
+	width: 10px;
+	background-color: #ccc;
+	/*因为宽高不一样，旋转默认元素中心轴旋转，所以往x轴行走的距离为5*/
+	transform: translateX( 445px) rotateY(-90deg);
+}
+.top{
+	height: 10px;
+	width: 100%;
+	background-color: #ccc;
+	/*因为宽高不一样，旋转默认元素中心轴旋转，所以往Y轴行走的距离为5*/
+	transform: translateY(-5px) rotateX(-90deg);
+}
+.bottom{
+	height: 10px;
+	width: 100%;
+	background-color: #ccc;
+	transform: translateY(55px) rotateX(-90deg);
+}
+
+@keyframes one {
+	from {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+	50% {
+		transform: rotateX(20deg) rotateY(-70deg);
+	}
+	70% {
+		transform: rotateX(20deg) rotateY(-70deg);
+	}
+	to {
+		transform: rotateX(180deg) rotateY(0deg);
+	}
+}
+@keyframes two {
+	from {
+		transform: rotateX(0deg) rotateY(0deg);
+	}
+	50% {
+		transform: rotateX(20deg) rotateY(70deg);
+	}
+	70% {
+		transform: rotateX(20deg) rotateY(70deg);
+	}
+	to {
+		transform: rotateX(180deg) rotateY(0deg);
+	}
+}

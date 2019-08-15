@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="carousel">
+		<ul>
+			<li class="no0"><img src="images/0.png" alt=""></li>
+			<li class="no1"><img src="images/1.png" alt=""></li>
+			<li class="no2" ><img src="images/2.png" alt=""></li>
+			<li class="no3" ><img src="images/3.png" alt=""></li>
+			<li class="no4" ><img src="images/4.png" alt=""></li>
+			<li class="no5" ><img src="images/5.png" alt=""></li>
+			<li class="no6" ><img src="images/6.png" alt=""></li>
+			<li class="wating" ><img src="images/7.png" alt=""></li>
+			<li class="wating" ><img src="images/8.png" alt=""></li>
+			<li class="wating" ><img src="images/9.png" alt=""></li>
+			<li class="wating" ><img src="images/10.png" alt=""></li>
+		</ul>
+		<div class="btn">
+			<a href="javascript:void(0)" class="btn-left" ></a>
+			<a href="javascript:void(0)" class="btn-right" ></a>
+		</div>
+	</div>
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+		//所有li的样式数组
+		var cssArr = [];
+		var $lis = $('.carousel ul li')
+		//类名数组
+		var classArr =['no0','no1','no2','no3','no4','no5','no6','wating','wating','wating','wating']
+		var length = classArr.length
+		//拿到所有li的所有样式  
+		$lis.each(function(index,item){	
+			cssArr.push({
+				"width": $(item).css("width"),
+				"height": $(item).css("height"),
+				"left": $(item).css("left"),
+				"top": $(item).css("top"),
+			})
+		})
+		console.log(cssArr)
+		//点击右按钮，li的样式给到下一个li
+		$('.btn-right').click(function(){
+			//防流氓
+			if( $lis.is(':animated') ){ 
+				return
+			}
+			//li的样式动画换成上一个li的样式
+			for(var i = 1;i<7;i++){
+				$('li.no' + i ).animate(cssArr[i-1],600)
+			}		
+			//类名相统一，轮换类名，
+			//将数组的最后一位删除放到数组的第一位
+			classArr.unshift( classArr.pop() )
+			for(var i = 0; i< length ;i++){
+				$lis.eq(i).attr('class',classArr[i])
+			}
+			// 由于.no7 是由waiting display: none 变来的
+			// 为了防止出现bug 强制给no7添加行内样式
+			$(".no7").css(cssArr[6]);
+		})
+		//左按钮，li的样式给到下一个li
+		$('.btn-left').click(function(){		
+			//防流氓
+			if( $lis.is(':animated') ){
+				return
+			}
+			//li的样式动画换成下一个li的样式
+			for(var i = 0; i < 6;i++){
+				$('li.no' + i).animate(cssArr[i+1],600)
+			}
+			//类名相统一，轮换类名，
+			//将数组的第一位删除放到数组的最后一位
+			classArr.push( classArr.shift() )
+			for(var i = 0; i< length ;i++){
+				$lis.eq(i).attr('class',classArr[i])
+			}
+			// 由于.no0 是由waiting display: none 变来的
+			// 为了防止出现bug 我们强制给no0添加行内样式
+			$(".no0").css(cssArr[0]);
+		})
+	</script>
+</body>
+</html>
