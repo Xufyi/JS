@@ -37,12 +37,12 @@ https://xufyi.github.io/JS/Heterosexual_Rolling_banner/
 ========  
 在线预览：  
 ---------
-https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
+https://xufyi.github.io/JS/star/
 
 效果展示:  
 -----
 <div align=center>
-   <img src="https://github.com/Xufyi/JS/blob/master/%E6%98%9F%E6%98%9F%E8%BF%9E%E7%BA%BF/start.gif" width="917">  
+   <img src="https://github.com/Xufyi/JS/blob/master/star/start.gif" width="917">  
 </div>  
 
 
@@ -62,10 +62,15 @@ https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
     
 时钟
 ========  
+
+在线预览：  
+---------
+https://xufyi.github.io/JS/clock/
+
 效果展示:  
 -----
 <div align=center>
-   <img src="https://github.com/Xufyi/JS/blob/master/%E6%97%B6%E9%92%9F/%E6%97%B6%E9%92%9F.png" width="400" height="400">  
+   <img src="https://github.com/Xufyi/JS/blob/master/clock/%E6%97%B6%E9%92%9F.png" width="400" height="400">  
 </div>  
 
 
