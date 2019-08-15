@@ -4,7 +4,7 @@
 3D轮播图  
 =======
 在线预览：  
-https://xufyi.github.io/banner/3D_banner/
+https://xufyi.github.io/JS/3D_banner/
 
 效果图：  
 <div align=center>
@@ -20,7 +20,8 @@ https://xufyi.github.io/banner/3D_banner/
 异性轮播图  
 =============
 在线预览：  
-https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
+--
+https://xufyi.github.io/JS/Heterosexual_Rolling_banner/
 
 效果图：  
 <div align=center>
