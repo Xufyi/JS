@@ -34,6 +34,10 @@ https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
     
 星星连线
 ========  
+在线预览：  
+---------
+https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
+
 效果展示:  
 -----
 <div align=center>
