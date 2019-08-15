@@ -33,17 +33,14 @@ https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
     
 星星连线
 ========  
-  
 效果展示:  
 -----
 <div align=center>
-   <img src="https://github.com/Xufyi/start/blob/master/start.gif" width="917">  
+   <img src="https://github.com/Xufyi/JS/blob/master/%E6%98%9F%E6%98%9F%E8%BF%9E%E7%BA%BF/start.gif" width="917">  
 </div>  
 
-使用了原生js + canvas，面向对象思想来实现。
 
-
-原理：  
+原理：  使用了原生js + canvas，面向对象思想来实现。
 -----
 1.先创建一个屏幕大小的画布，一个跟随鼠标移动的星星。
 
@@ -54,5 +51,20 @@ https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
   判断每个星星和后面的星星之间距离，绝对值 < 50 px ,连线
   判断跟随鼠标移动的星星和其他星星的距离，绝对值 < 50 px ,连线
 
- 
 4.鼠标点击事件，增加5个星星，减少原来画布中的5个星星，保证星星数量再100个。
+
+    
+时钟
+========  
+效果展示:  
+-----
+<div align=center>
+   <img src="https://https://github.com/Xufyi/JS/blob/master/%E6%97%B6%E9%92%9F/%E6%97%B6%E9%92%9F.png" width="456" height="457">  
+</div>  
+
+
+原理：  使用了原生js + canvas来实现
+
+
+
+
