@@ -60,7 +60,7 @@ https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
 效果展示:  
 -----
 <div align=center>
-   <img src="https://https://github.com/Xufyi/JS/blob/master/%E6%97%B6%E9%92%9F/%E6%97%B6%E9%92%9F.png" width="456" height="457">  
+   <img src="https://github.com/Xufyi/JS/blob/master/%E6%97%B6%E9%92%9F/%E6%97%B6%E9%92%9F.png" width="400" height="400">  
 </div>  
 
 
