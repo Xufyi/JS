@@ -24,7 +24,7 @@ https://xufyi.github.io/banner/Heterosexual_Rolling_banner/
 
 效果图：  
 <div align=center>
-   <img src="https://github.com/Xufyi/JS/blob/master/Heterosexual_Rolling_banner/images/pic_bg.gif" width="785" height="218">  
+   <img src="https://github.com/Xufyi/JS/blob/master/Heterosexual_Rolling_banner/rollingBanner.gif" width="785" height="218">  
 </div>
 
 原理：  
