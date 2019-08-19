@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,ol{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		#box1{
+			/*background: url('images/small.jpg') no-repeat;*/
+			/*background-size: cover;*/
+			/*ie不支持background-size属性，所以用img代替*/
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			position: absolute;
+			top: 50px;
+			left: 10px;
+		}
+		#box1 img{
+			width: 100%;
+			height: 100%;
+		}
+		#box1 #glass{
+			background: rgb(0,0,255); 
+			
+			filter: alpha(opacity=50);
+			background: rgba(0,0,255,.5);
+			width: 200px;
+			height: 200px;
+			position: absolute;
+		}
+		#box11{
+			background: url('imgs/big.jpg') no-repeat 0 0;
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			position: absolute;
+			top: 50px;
+			left: 500px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<div id="glass"></div>
+		<img src="imgs/small.jpg" alt="">
+	</div>
+	<div id="box11"></div>
+
+
+	<!-- <script src="封装元素到页面的距离.html"></script> -->
+	<script>
+		var box1 = document.getElementById('box1')
+		var box11 = document.getElementById('box11')
+		var glass = document.getElementById('glass')
+		box1.onclick =function(w){
+			console.log(w)
+		}
+		// 1.小镜片，
+		// 2.鼠标点击后移动，鼠标松开不移动
+		//给glass注册事件也可以，但不够灵活，鼠标稍微离开glass移动就无效。
+		document.onmousedown = function(e){   
+			//计算出移动距离  为什么要用clientX
+			//offset受子元素影响所以不合适
+			 e = e || window.event
+			 var x = e.clientX
+			 // var y = e.clientY
+			 var y = offset(glass).top
+
+			//获取小镜片单前的定位值
+			var t = glass.offsetTop
+			var l = glass.offsetLeft
+
+			document.onmousemove = function(e){
+				e = e || window.event
+				//如果页面由滚动值的话，可以用pageX，但是要兼容ie
+				 var n_y = e.clientY + document.documentElement.scrollTop
+				 var n_x = e.clientX 
+
+				var result_x = n_x - x +l ;
+				var result_y = n_y - y +t ;
+				
+				console.log(result_x)
+				console.log(result_y)
+
+				console.log(result_x)
+				console.log(result_y)
+
+				//改变镜片位置，并加限制
+				if( result_y < 0){
+					result_y = 0;
+				}else if( result_y > box1.clientHeight - glass.clientHeight){
+					result_y = box1.clientHeight - glass.clientHeight;
+				}
+
+				if( result_x < 0){
+					result_x = 0 ;
+				}else if( result_x > box1.clientWidth - glass.clientWidth){
+					result_x = box1.clientWidth - glass.clientWidth;
+				}
+
+				glass.style.top = result_y + 'px';
+				glass.style.left = result_x + 'px';
+				//box11 背景图片位置跟着改变
+				box11.style.backgroundPosition = -2 * result_x + 'px ' + -2 * result_y + 'px'
+			}
+		}
+
+		document.onmouseup = function(){
+			document.onmousemove = null;  
+			//这里为什么是清除move而不是down
+			//因为这里移动的移动事件产生的一系列事件，所以清除move
+		}
+
+		//获取元素到页面top和width之间的距离
+		function offset(dom){		
+			var result = {
+				top:  0,
+				left:  0
+			}
+			//判断是不是ie浏览器，offset会多一个父元素外边框
+			var isIE = null;
+			var str = window.navigator.userAgent;
+
+			if( str.indexOf('MSIE 8.0') === -1 ){
+				// console.log('高级浏览器')
+				isIE = false;
+			}else{
+				console.log('ie8')
+				isIE = true;
+			}		
+			if( isIE ){
+				//ie浏览器
+					while( dom != document.body ){
+						result.top += dom.offsetTop ;
+						result.left += dom.offsetLeft ;
+						dom = dom.offsetParent;
+					}
+			}else{
+				//高级浏览器			
+				while( dom != document.body ){
+						result.top += dom.offsetTop  + dom.offsetParent.clientTop;
+						result.left += dom.offsetLeft + dom.offsetParent.clientLeft;
+						dom = dom.offsetParent;
+					}
+			}
+			return result;
+		}
+	</script>
+</body>
+</html>
