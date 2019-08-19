@@ -71,10 +71,22 @@ https://xufyi.github.io/JS/clock/
 -----
 <div align=center>
    <img src="https://github.com/Xufyi/JS/blob/master/clock/%E6%97%B6%E9%92%9F.png" width="400" height="400">  
-</div>  
-
+</div> 
 
 原理：  使用了原生js + canvas来实现
+
+放大镜
+========  
+在线预览：  
+---------
+https://xufyi.github.io/JS/Magnifier/
+
+效果展示:  
+-----
+<div align=center>
+   <img src="https://github.com/Xufyi/JS/blob/master/Magnifier/magnifier.gif" width="682" height="377">  
+</div> 
+
 
 
 
