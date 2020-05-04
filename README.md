@@ -23,7 +23,7 @@ https://xufyi.github.io/JS/3D_banner/
 --
 https://xufyi.github.io/JS/Heterosexual_Rolling_banner/
 
-效果图：  
+效果图：  （演示图片可能加载过慢，直接点击在线预览吧！）
 <div align=center>
    <img src="https://github.com/Xufyi/JS/blob/master/Heterosexual_Rolling_banner/rollingBanner.gif" width="785" height="218">  
 </div>
@@ -39,7 +39,7 @@ https://xufyi.github.io/JS/Heterosexual_Rolling_banner/
 ---------
 https://xufyi.github.io/JS/star/
 
-效果展示:  
+效果展示:  （演示图片可能加载过慢，直接点击在线预览吧！）
 -----
 <div align=center>
    <img src="https://github.com/Xufyi/JS/blob/master/star/start.gif" width="917">  
@@ -67,7 +67,7 @@ https://xufyi.github.io/JS/star/
 ---------
 https://xufyi.github.io/JS/clock/
 
-效果展示:  
+效果展示:  （演示图片可能加载过慢，直接点击在线预览吧！）
 -----
 <div align=center>
    <img src="https://github.com/Xufyi/JS/blob/master/clock/%E6%97%B6%E9%92%9F.png" width="400" height="400">  
@@ -81,7 +81,7 @@ https://xufyi.github.io/JS/clock/
 ---------
 https://xufyi.github.io/JS/Magnifier/
 
-效果展示:  
+效果展示:  （演示图片可能加载过慢，直接点击在线预览吧！）
 -----
 <div align=center>
    <img src="https://github.com/Xufyi/JS/blob/master/Magnifier/magnifier.gif" width="682" height="377">  
