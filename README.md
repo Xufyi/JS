@@ -6,7 +6,7 @@
 在线预览：  
 https://xufyi.github.io/JS/3D_banner/
 
-效果图：  
+效果图：  （演示图片可能加载过慢，直接点击在线预览吧！）
 <div align=center>
    <img src="https://github.com/Xufyi/JS/blob/master/3D_banner/3dBanner.gif" width="617" height="444">  
   
